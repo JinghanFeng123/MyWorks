@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="controllers/login_controller.js"></script>
+    <script src="model/Book.js"></script>
+    <script src="model/Library.js"></script>
+    <script src="model/User.js"></script>
+    <script src="model/Member.js"></script>
+    <script src="model/Librarian.js"></script>
+    <script src="model/BorrowingRecord.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+    font-family: Arial;
+}
+
+</style>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+
+<body>
+  <video autoplay muted loop id="bg-video">
+    <source src="BG.mp4" type="video/mp4">
+  </video>
+  <!-- 你的网页内容 -->
+
+<h3 style="color: #ffffff; font-size: 2.5em;">
+  "<span style="color: #3d7bff; font-size: 1.2em; font-family: 'cursive', monospace;">Stellar</span>" 
+  Library Management</span> System
+</h3>
+
+<div class="tab">
+  <button class="tablinks" onclick="openCity(event, 'Member')" style="color: rgb(255, 255, 255);">Member Channel</button>
+  <button class="tablinks" onclick="openCity(event, 'Librarian')" style="color: rgb(255, 255, 255);">Librarian Channel</button>
+</div>
+
+<div id="Member" class="tabcontent">
+            <h3>Member log in</h3>
+            <form id="member-log-in-form" autocomplete="off">
+            <label for="member-id">Member ID:</label><br>
+            <input id="member-id"><br>
+            <label for="member-password">Member Password:</label><br>
+            <input id="member-password" type="password"><br>
+            <button type="submit">Log in</button>
+            </form>
+            <p id="borrowed-books"></p>
+</div>
+
+<div id="Librarian" class="tabcontent">
+            <h3>Librarian log in</h3>
+            <form id="librarian-member-log-in-form" autocomplete="off">
+            <label for="librarian-id">librarian ID:</label><br>
+            <input id="librarian-id"><br>
+            <label for="librarian-password">librarian Password:</label><br>
+            <input id="librarian-password" type="password"><br>
+            <button type="submit">Log in</button>
+            </form>
+            <p id="borrowed-books"></p>
+</div>
+
+<script>
+    //show the tab
+function openCity(evt, cityName) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(cityName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+
+
+
+</script>
+
+    <script src="controllers/library_controller.js"></script>   
+
+    <footer style="position: fixed; bottom: 0; width: 100%; color: #6b6b6b; text-align: center; padding: 10px 0;">
+  © 2025 'Stellar' Library Management System(version:base) Developed by Qingham Von. All rights reserved.
+</footer>
+</body>
+</html> 

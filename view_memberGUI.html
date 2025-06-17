@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+<script>
+  const memberId = localStorage.getItem('currentMemberId');
+  const memberName = localStorage.getItem('currentMemberName');
+</script>
+
+<head>
+    <script src="controllers/login_controller.js"></script>
+    <script src="model/Book.js"></script>
+    <script src="model/Library.js"></script>
+    <script src="model/User.js"></script>
+    <script src="model/Member.js"></script>
+    <script src="model/Librarian.js"></script>
+    <script src="model/BorrowingRecord.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+    font-family: Arial;
+}
+
+</style>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+
+<body>
+  <video autoplay muted loop id="bg-video">
+    <source src="BG.mp4" type="video/mp4">
+  </video>
+  <!-- 你的网页内容 -->
+
+<h3 id="welcome-title" style="color: #ffffff; font-size: 2.5em;">
+  <!-- 这里内容由JS插入 -->
+</h3>
+
+<script>
+document.getElementById('welcome-title').innerHTML =
+  `Hello, Dear ${memberName}. You are "<span style="color: #3d7bff; font-size: 1.2em; font-family: 'cursive', monospace;">Stellar</span>" Member`;
+</script>
+
+<div class="tab">
+  <button class="tablinks" onclick="openCity(event, 'borrow-book')" style="color: rgb(255, 255, 255);">Borrow Book</button>
+  <button class="tablinks" onclick="openCity(event, 'return-book')" style="color: rgb(255, 255, 255);">Return Book</button>
+</div>
+
+<div id="borrow-book" class="tabcontent">
+                        <h2>Borrowing a Book</h2>
+            <form id="borrow-book-form" autocomplete="off">
+<!--                 <label for="borrow-member-id">Member ID:</label><br>
+                <input id="borrow-member-id"><br> -->
+                <label for="borrow-book-id">Book ID:</label><br>
+                <input id="borrow-book-id"><br>
+                <label for="due-date">Due Date:</label><br>
+                <input type="date" id="due-date"><br>
+                <button type="submit">Borrow</button>
+            </form>
+</div>
+
+<div id="return-book" class="tabcontent">
+            <h3>Return a Book</h3>
+            <form id="return-book-form" autocomplete="off">
+            <!-- <label for="return-member-id">Member ID:</label><br>
+            <input id="return-member-id"><br> -->
+            <label for="return-book-id">Book ID:</label><br>
+            <input id="return-book-id"><br>
+            <button type="submit">Return</button><br>
+            </form>
+            <p id="borrowed-books"></p>
+
+</div>
+
+<script>
+    //show the tab
+function openCity(evt, cityName) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(cityName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+
+
+
+</script>
+
+    <script src="controllers/library_controller.js"></script>   
+    <script src="controllers/borrow_controller.js"></script>   
+    <script src="controllers/return_controller.js"></script>   
+
+    <footer style="position: fixed; bottom: 0; width: 100%; color: #6b6b6b; text-align: center; padding: 10px 0;">
+  © 2025 'Stellar' Library Management System(version:base) Developed by Qingham Von. All rights reserved.
+</footer>
+</body>
+</html> 

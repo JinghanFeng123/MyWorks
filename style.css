@@ -1,0 +1,159 @@
+/* Set some defaults for the entire <body>, will mostly be overwritten */
+body {
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+}
+
+section, div{
+    /*去除 body 和 html 的默认边距和内边距：*/
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+/* Determines the look and feel of anything inside the <header></header> */
+header {
+    background-color: hsl(0, 0%, 78%);
+    color: rgb(116, 11, 197);
+    padding: 1px 0px;
+    font-size: x-large;
+    text-align: center;
+    border-radius: 8px;
+}
+
+/* Determines the look and feel of anything inside the <main></main> */
+main {
+    background-color: #ffffff;
+    display: grid;
+    /* Make sure the first minmax number is under half the max-width if you want 2 columns */
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    max-width: 900px;
+
+    gap: 10px;
+    padding: 10px;
+    margin: 0 auto;
+    border-radius: 8px;
+}
+
+/* Determines the look and feel of anything inside a <section></section> tag */
+section {
+    background-color: #dadada;
+
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-top: 20px;
+}
+
+/* Determines the look and feel of <input> tags */
+input {
+    width: 70%;
+    padding: 0.5rem 0.5rem;
+    height: 1rem;
+    margin: 8px;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+}
+
+/* Gives an input box a nice glow when you put your mouse over it */
+input:hover {
+    box-shadow: 0 0 10px #929292;
+}
+
+/* Overwrites the width value for <input> tags if it has type="checkbox" set. */
+input[type="checkbox"] {
+    width: auto;
+}
+
+/* Determines the look and feel of <button> tags */
+button {
+    background-color: transparent;
+    display: block;
+    margin: 0 auto;
+    /* This is the font colour */
+    color: white;
+    border: 10px;
+    padding: 10px 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+/* Gives the button a nice glow when you put your mouse over it */
+button:hover {
+    box-shadow: 0 0 10px #929292;
+}
+
+#bg-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  min-width: 100vw;
+  min-height: 100vh;
+  width: auto;
+  height: auto;
+  z-index: -1;
+  object-fit: cover;
+}
+
+/* Style the tab */
+.tab {
+  overflow: hidden;
+  border: 0px solid #ccc;
+  background: rgba(0, 0, 0, 0.4); /* 半透明黑色，0.4 可调整 
+  /* 或者用渐变效果：
+  background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.2));
+  backdrop-filter: blur(2px); /* 可选，增加毛玻璃效果 */
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background: rgba(150, 150, 150, 0.4); /* 半透明黑色，0.4 可调整 */
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+    color:#ccc;
+  display: none;
+  padding: 6px 12px;
+  -webkit-animation: fadeEffect 1s;
+  animation: fadeEffect 1s;
+
+    overflow: hidden;
+  border: 0px solid #ccc;
+  /*background: rgba(0, 0, 0, 0.3); /* 半透明黑色，0.4 可调整 */
+  /* 或者用渐变效果：*/
+  background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.2));
+  backdrop-filter: blur(2px); /* 可选，增加毛玻璃效果 */
+}
+
+/* Fade in tabs */
+@-webkit-keyframes fadeEffect {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+@keyframes fadeEffect {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}

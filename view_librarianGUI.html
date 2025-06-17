@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+
+<script>
+  const librarianId = localStorage.getItem('currentLibrarianId');
+  const librarianName = localStorage.getItem('currentLibrarianName');
+</script>
+
+<head>
+    <script src="controllers/login_controller.js"></script>
+    <script src="model/Book.js"></script>
+    <script src="model/Library.js"></script>
+    <script src="model/User.js"></script>
+    <script src="model/Member.js"></script>
+    <script src="model/Librarian.js"></script>
+    <script src="model/BorrowingRecord.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+    font-family: Arial;
+}
+
+</style>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+
+<body>
+  <video autoplay muted loop id="bg-video">
+    <source src="BG.mp4" type="video/mp4">
+  </video>
+  <!-- 你的网页内容 -->
+
+<h3 id="welcome-title" style="color: #ffffff; font-size: 2.5em;">
+  <!-- 这里内容由JS插入 -->
+</h3>
+
+<script>
+document.getElementById('welcome-title').innerHTML =
+  `Hello, Dear ${librarianName}. You are "<span style="color: #3d7bff; font-size: 1.2em; font-family: 'cursive', monospace;">Stellar</span>" librarian`;
+</script>
+
+<div class="tab">
+  <button class="tablinks" onclick="openCity(event, 'show-book')" style="color: rgb(255, 255, 255);">Book Overview</button>
+  <button class="tablinks" onclick="openCity(event, 'add-book')" style="color: rgb(255, 255, 255);">Add Book</button>
+  <button class="tablinks" onclick="openCity(event, 'remove-book')" style="color: rgb(255, 255, 255);">Remove Book</button>
+  <button class="tablinks" onclick="openCity(event, 'show-user')" style="color: rgb(255, 255, 255);">User Overview</button>
+  <button class="tablinks" onclick="openCity(event, 'add-user')" style="color: rgb(255, 255, 255);">Add User</button>
+  <button class="tablinks" onclick="openCity(event, 'update-user')" style="color: rgb(255, 255, 255);">Update User</button>
+  <button class="tablinks" onclick="openCity(event, 'delete-user')" style="color: rgb(255, 255, 255);">Delete User</button>
+  <button class="tablinks" onclick="openCity(event, 'catalogue-search')" style="color: rgb(255, 255, 255);">Catalogue Search</button>
+</div>
+
+<div id="show-book" class="tabcontent">
+                <h2>BookOverview</h2>       
+            <ul id="book-display"></ul>
+</div>
+
+<div id="add-book" class="tabcontent">
+                  <h2>Add Book</h2>
+                <form id="add-book-form" autocomplete="off">
+                <label for="title">Title:</label><br>
+                <input id="title"><br>
+                <label for="author">Author:</label><br>
+                <input id="author"><br>
+                <label for="genre">Genre:</label><br>
+                <input id="genre"><br>
+                <label for="ISBN">ISBN:</label><br>
+                <input id="ISBN"><br>
+                <label for="location">Location:</label><br>
+                <input id="location"><br>
+                <label for="description">Description:</label><br>
+                <input id="description"><br>
+                <button type="submit">Add Book</button>    
+            </form>
+
+</div>
+
+<div id="remove-book" class="tabcontent">
+                  <h2>Remove Book</h2>
+                <form id="remove-book-form" autocomplete="off">
+                <label for="ISBN">ISBN:</label><br>
+                <input id="ISBN"><br>
+                <button type="submit">Remove Book</button>    
+            </form>
+
+</div>
+
+<div id="show-user" class="tabcontent">
+    <h2>User Catelogue</h2>
+    <ul id="user-display"></ul> 
+</div>
+
+<div id="add-user" class="tabcontent">
+            <form id="add-user-form" autocomplete="off">
+                <h2>Add User</h2>
+                <label for="userId">User ID:</label><br>
+                <input id="userId"><br>
+                <label for="name">Name:</label><br>
+                <input id="name"><br>
+                <label for="email">Email:</label><br>
+                <input id="email"><br>
+                <label for="password">password:</label><br>
+                <input id="password"><br>
+                <label for="librarian">Create as Librarian? </label><br>
+                <input type="checkbox" id="librarian"><br>
+                <button type="submit">Add User</button>    
+            </form>  
+</div>
+
+<div id="update-user" class="tabcontent">
+            <form id="update-user-form" autocomplete="off">
+            <h2>Update User</h2>
+            <label for="user-id">User ID:</label><br>
+                <input id="user-id"><br>
+                <label for="name">Name:</label><br>
+                <input id="name"><br>
+                <label for="email">Email:</label><br>
+                <input id="email"><br>
+                <label for="password">Password:</label><br>
+                <input id="password"><br>
+                <button type="submit">Update User</button>
+                <p id="update-user-result"></p>
+            </form>
+</div>
+
+<div id="delete-user" class="tabcontent">
+            <form id="delete-user-form" autocomplete="off">
+            <h2>Delete User</h2>
+            <label for="user-id">User ID:</label><br>
+                <input id="user-id"><br>
+                <label for="name">Name:</label><br>
+                <input id="name"><br>
+                <label for="email">Email:</label><br>
+                <input id="email"><br>
+                <label for="password">Password:</label><br>
+                <input id="password"><br>
+                <button type="submit">Delete User</button>
+                <p id="update-user-result"></p>
+            </form>
+
+</div>
+
+<div id="catalogue-search" class="tabcontent">
+            <form id="catalogue-search-form" autocomplete="off">
+            <h2>catalogue Search</h2>
+                <label for="title">Title:</label><br>
+                <input id="title"><br>
+                <button type="submit">Search</button><br>
+            </form>
+            <ul id="search-display">
+                <li>Book 1</li>
+                <li>Book 2</li>
+                <li>Book 3</li>
+            </ul>
+
+</div>
+
+
+
+    <footer style="position: fixed; bottom: 0; width: 100%; color: #6b6b6b; text-align: center; padding: 10px 0;">
+  © 2025 'Stellar' Library Management System(version:base) Developed by Qingham Von. All rights reserved.
+</footer>
+<script>
+    //show the tab
+function openCity(evt, cityName) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(cityName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+
+
+
+</script>
+    <script src="controllers/search_controller.js"></script>   
+    <script src="controllers/library_controller.js"></script>   
+    <script src="controllers/book_controller.js"></script>   
+    <script src="controllers/user_controller.js"></script>   
+</body>
+</html> 
